@@ -1,11 +1,11 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <title>情侣游戏</title>
-</head>
-<body>
-  <h1 style="color:red;">情侣游戏首页成功！(5001专用测试)</h1>
-</body>
-</html>
-
+{% extends "base.html" %}
+{% block content %}
+<div class="card center">
+  <h2>欢迎来到情侣默契小游戏 💖</h2>
+  <p>一起回答问题，测测你们的心动默契值！</p>
+  <div class="btn-group">
+    <a class="btn" href="{{ url_for('create_room') }}">创建房间</a>
+    <a class="btn btn-secondary" href="{{ url_for('join_room') }}">加入房间</a>
+  </div>
+</div>
+{% endblock %}

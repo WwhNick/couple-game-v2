@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>默契结果 💘</h2>
+
+  <div class="avatars">
+    <div class="avatar-card">
+      {% if room.p1_photo %}
+        <img src="{{ url_for('uploaded_file', filename=room.p1_photo) }}" alt="玩家1照片">
+      {% else %}
+        <div class="avatar-placeholder">玩家1</div>
+      {% endif %}
+      <p>{{ room.p1_name }}</p>
+    </div>
+
+    <div class="avatar-card">
+      {% if room.p2_photo %}
+        <img src="{{ url_for('uploaded_file', filename=room.p2_photo) }}" alt="玩家2照片">
+      {% else %}
+        <div class="avatar-placeholder">玩家2</div>
+      {% endif %}
+      <p>{{ room.p2_name }}</p>
+    </div>
+  </div>
+
+  <div class="score-box">
+    <p>选择题默契分：<strong>{{ rs.match_score }}</strong></p>
+    <p>加分题得分：<strong>{{ rs.bonus_score }}</strong></p>
+    <p>总分：<strong class="big-score">{{ rs.total_score }}</strong></p>
+    <p class="summary">{{ rs.summary }}</p>
+  </div>
+
+  <div class="btn-group">
+    <a class="btn" href="{{ url_for('index') }}">返回首页</a>
+    <a class="btn btn-secondary" href="{{ url_for('history') }}">查看历史</a>
+  </div>
+</div>
+{% endblock %}

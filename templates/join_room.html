@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>加入房间</h2>
+  <form method="post" class="form">
+    <label>输入房间码</label>
+    <input type="text" name="room_code" placeholder="例如：AB12CD" required>
+    <button class="btn" type="submit">进入答题</button>
+  </form>
+</div>
+{% endblock %}

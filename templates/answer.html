@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>答题页面</h2>
+  <p>
+    房间码：<strong>{{ room_code }}</strong><br>
+    当前玩家：<strong>{{ room.p1_name if player_no == 1 else room.p2_name }}</strong>
+  </p>
+
+  <form method="post" class="form">
+    {% for q in questions %}
+      <div class="question-block">
+        <h3>{{ loop.index }}. {{ q.q }}</h3>
+        <div class="options">
+          {% for opt in q.options %}
+            <label class="option">
+              <input type="radio" name="q_{{ q.id }}" value="{{ opt }}" required>
+              <span>{{ opt }}</span>
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
+    <div class="question-block">
+      <h3>加分题</h3>
+      {% for prompt in bonus_prompts %}
+        <label>{{ loop.index }}. {{ prompt }}</label>
+        <textarea name="bonus_{{ loop.index }}" rows="3" placeholder="写下你的答案..."></textarea>
+      {% endfor %}
+    </div>
+
+    <button class="btn" type="submit">提交答案</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>创建房间</h2>
+  <form method="post" enctype="multipart/form-data" class="form">
+    <label>玩家1昵称</label>
+    <input type="text" name="p1_name" placeholder="比如：小王子" required>
+
+    <label>玩家2昵称</label>
+    <input type="text" name="p2_name" placeholder="比如：小玫瑰" required>
+
+    <label>玩家1照片（可选）</label>
+    <input type="file" name="p1_photo" accept="image/*">
+
+    <label>玩家2照片（可选）</label>
+    <input type="file" name="p2_photo" accept="image/*">
+
+    <button class="btn" type="submit">创建并开始答题</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>历史记录</h2>
+
+  {% if data %}
+    <div class="history-list">
+      {% for item in data %}
+        <div class="history-item">
+          <p><strong>{{ item.p1_name }}</strong> &amp; <strong>{{ item.p2_name }}</strong></p>
+          <p>房间码：{{ item.room_code }}</p>
+          <p>总分：<strong>{{ item.total_score }}</strong></p>
+          <p>{{ item.summary }}</p>
+          <p class="muted">{{ item.created_at }}</p>
+          <a class="btn small-btn" href="{{ url_for('result', room_code=item.room_code) }}">查看结果</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>还没有历史记录，快去创建一局吧～</p>
+  {% endif %}
+</div>
+{% endblock %}

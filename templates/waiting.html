@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card center">
+  <h2>等待另一位玩家提交中...</h2>
+  <p>房间码：<strong>{{ room_code }}</strong></p>
+  <p id="tips">系统每2秒自动检查一次，无需手动刷新。</p>
+</div>
+
+<script>
+async function pollStatus() {
+  try {
+    const res = await fetch("{{ url_for('room_status', room_code=room_code) }}");
+    const data = await res.json();
+    if (data.ready) {
+      window.location.href = "{{ url_for('result', room_code=room_code) }}";
+      return;
+    }
+  } catch (e) {}
+  setTimeout(pollStatus, 2000);
+}
+pollStatus();
+</script>
+{% endblock %}
